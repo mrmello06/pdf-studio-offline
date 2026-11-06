@@ -9,6 +9,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/mrmello06/pdf-studio-offline/releases/download/v1.0.0/PDFStudio-Offline.apk">
+    <img src="https://img.shields.io/badge/📥%20Download-Direct%20APK%20(v1.0.0)-2ea44f?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
+  </a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android" />
   <img src="https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
   <img src="https://img.shields.io/badge/UI-Jetpack%20Compose%20%7C%20Material%203-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Compose" />
