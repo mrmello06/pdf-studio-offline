@@ -1,0 +1,66 @@
+name: Build & Release Offline APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Grant Execute Permission for Gradlew
+        run: chmod +x gradlew || true
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --no-daemon
+
+      - name: Rename APK for Release
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk PDFStudio-Offline.apk
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDFStudio-Offline-APK
+          path: PDFStudio-Offline.apk
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        with:
+          tag_name: v1.0.0
+          name: "PDF Studio Offline v1.0.0"
+          body: |
+            ### 📱 PDF Studio Offline — Direct APK Download
+            
+            This is the standalone APK compiled entirely from source.
+            
+            - **100% Offline**: No network permissions required.
+            - **File Size**: ~15 MB
+            - **Requirements**: Android 7.0 (API 24) or higher.
+            
+            #### 📥 Download:
+            Download `PDFStudio-Offline.apk` below and open it on your Android phone to install.
+          draft: false
+          prerelease: false
+          files: PDFStudio-Offline.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
