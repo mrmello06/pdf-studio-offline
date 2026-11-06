@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PDF Studio Offline</string>
+    <string name="app_tagline">All-in-one 100% Offline PDF Toolkit</string>
+    <string name="permission_storage_rationale">Storage permission is required to read, modify, and save PDF files on your device completely offline.</string>
+    <string name="permission_camera_rationale">Camera permission is required to scan physical documents directly into high quality PDFs.</string>
+</resources>
