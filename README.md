@@ -1,8 +1,5 @@
 # 📱 PDF Studio Offline
 
-<p align="center">
-  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="PDF Studio Logo" width="100" height="100" />
-</p>
 
 <p align="center">
   <strong>Complete iLovePDF-style toolkit running 100% offline on your Android device.</strong>
